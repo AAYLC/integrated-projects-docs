@@ -3,7 +3,8 @@ There are 3 important parts of the integrated project which are Robotic arm, Pum
 
 ## Pump oil jack(donkey)
 Pump oil jack design is created by Cisco Talos group that can be found on [Cisco Talos github](https://github.com/Cisco-Talos/oil-pumpjack), 
-all parts are under stl directory. The oil pump will be activated if the ball pass through it, triggered by LDR sensor and laser. 
+all parts are under stl directory. The oil pump will be activated if the ball pass through it, triggered by LDR sensor and laser. All files related 
+to the pump oil jack can be found on [AAYLC repository](https://github.com/AAYLC/integrated-projects-docs/tree/master/oil-pumpjack)
 
 ### Pump oil jack components
 1. Arduino Nano
@@ -87,7 +88,9 @@ void loop(){
 
 ## Robotic arm claw 
 Robotic arm clawbasically separated into 3 main parts which are base, controlled with powerful 360 degree servo, 
-middle part which determine upper and lower position of the arm of the claw and the claw itself which is controlled by 9g servo model.
+middle part which determine upper and lower position of the arm of the claw and the claw itself which is controlled by 9g servo model. All files related 
+to the robotic arm claw can be found on [AAYLC repository](https://github.com/AAYLC/integrated-projects-docs/tree/master/robotic-arm-claw)
+
 
 ### Robotic arm claw components
 
