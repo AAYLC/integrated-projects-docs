@@ -1,7 +1,7 @@
 # Welcome to the documentation for SMA DIH Miri Launching integrated project
 ![Screenshot](img/launching-day.jpeg)
 
-There are 3 important parts of the integrated project which are Robotic arm, Pump oil jack and pinball table. 
+There are 3 important parts of the integrated project which are Robotic arm, Pump oil jack and pinball table. All of the files will be available on [AAYLC repository](https://github.com/AAYLC/integrated-projects-docs) including fritzing files for circuit design and wiring, .stl files for 3d print. 
 
 
 
