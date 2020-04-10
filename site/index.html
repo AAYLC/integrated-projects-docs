@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Digital Innovation Hub Miri SMA Launching - Integrated Nton Project</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Digital Innovation Hub Miri SMA Launching - Integrated Nton Project</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#welcome-to-the-documentation-for-sma-dih-miri-launching" class="nav-link">Welcome to the documentation for SMA DIH Miri Launching</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#pump-oil-jackdonkey" class="nav-link">Pump oil jack(donkey)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#robotic-arm-claw" class="nav-link">Robotic arm claw</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pinball-table-design" class="nav-link">Pinball Table design</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="welcome-to-the-documentation-for-sma-dih-miri-launching">Welcome to the documentation for SMA DIH Miri Launching</h1>
+<p>There are 3 important parts of the integrated project which are Robotic arm, Pump oil jack and pinball table. </p>
+<h2 id="pump-oil-jackdonkey">Pump oil jack(donkey)</h2>
+<p>Pump oil jack design is created by Cisco Talos group that can be found on <a href="https://github.com/Cisco-Talos/oil-pumpjack">Cisco Talos github</a>, 
+all parts are under stl directory. The oil pump will be activated if the ball pass through it, triggered by LDR sensor and laser. </p>
+<h3 id="pump-oil-jack-components">Pump oil jack components</h3>
+<ol>
+<li>Arduino Nano</li>
+<li>DC Motor</li>
+<li>DC Motor driver</li>
+</ol>
+<h3 id="pump-oil-jack-design">Pump oil jack design</h3>
+<p><img alt="Screenshot" src="img/pump-labelled.png" /></p>
+<p>Pump oil jack design consists of 6 different 3D printed parts. The original design have smoke generator and use
+UNO instead of NANO. </p>
+<h3 id="pump-oil-jack-wiring">Pump oil jack wiring</h3>
+<h3 id="pump-oil-jack-code">Pump oil jack code</h3>
+<pre><code class="C">int inputPin = 6;               // choose the input pin (for PIR sensor)
+int pirState = LOW;             // we start, assuming no motion detected
+int val = 0;
+int MOTOR_EN_1_2 = 4;
+int MOTOR_IN1 = 3;
+int MOTOR_IN2 = 2;
+
+
+int slow = 64;
+int normal = 128;
+int fast = 255;
+
+int Speed;
+
+
+void Forward_Rev(void){
+  analogWrite(MOTOR_EN_1_2, Speed);
+  digitalWrite(MOTOR_IN1, HIGH);
+  digitalWrite(MOTOR_IN2, LOW);
+}
+
+void Brake(void){
+  digitalWrite(MOTOR_IN1, HIGH);
+  digitalWrite(MOTOR_IN2, HIGH);
+}
+
+
+
+// variable for reading the pin status 
+void setup() {
+  pinMode(MOTOR_EN_1_2, OUTPUT);
+  pinMode(MOTOR_IN1, OUTPUT);
+  pinMode(MOTOR_IN2, OUTPUT);
+  pinMode(inputPin, INPUT);     // declare sensor as input
+
+  Serial.begin(115200);
+}
+
+void loop(){
+  val = digitalRead(inputPin);  // read input value
+  if (val == HIGH) {
+    Forward_Rev();
+    if (pirState == LOW) {
+      // we have just turned on
+      Serial.println(&quot;Motion detected!&quot;);
+      // We only want to print on the output change, not state
+      pirState = HIGH;
+    }
+  } else {
+    Brake();
+    if (pirState == HIGH){
+      // we have just turned of
+      Serial.println(&quot;Motion ended!&quot;);
+      // We only want to print on the output change, not state
+      pirState = LOW;
+    }
+  }
+
+  Speed=slow; // Normal Speed
+</code></pre>
+
+<h2 id="robotic-arm-claw">Robotic arm claw</h2>
+<p>Robotic arm clawbasically separated into 3 main parts which are base, controlled with powerful 360 degree servo, 
+middle part which determine upper and lower position of the arm of the claw and the claw itself which is controlled by 9g servo model.</p>
+<h3 id="robotic-arm-claw-components">Robotic arm claw components</h3>
+<ol>
+<li>Arduino Uno</li>
+<li>Servo motor towerpro 9G</li>
+<li>Servo motor towerpro </li>
+<li>Servo motor 360 towerpro MG995</li>
+<li>Push button</li>
+<li>LDR</li>
+<li>Laser</li>
+<li>Wires &amp; jumper</li>
+</ol>
+<h3 id="robotic-arm-claw-design">Robotic arm claw design</h3>
+<p><img alt="Screenshot" src="img/robotic-arm.png" />
+<img alt="Screenshot" src="img/robotic-arm-parts.png" />
+<img alt="Screenshot" src="img/claw-only.jpg" /></p>
+<h3 id="robotic-arm-claw-wiring">Robotic arm claw wiring</h3>
+<p><img alt="Screenshot" src="img/robotic-arm-wiring.png" /></p>
+<p>For the wiring, since there are only one 5V pin on UNO, all of the servo motor will be powered by external AAA battery pack. 
+This include the UNO to be powered by battery pack for portability power issue. </p>
+<h3 id="robotic-arm-claw-code">Robotic arm claw code</h3>
+<pre><code class="C">//DIH Starter
+#define btmSVpin 8
+#define topSVpin 9
+#define gripSVpin 10
+#define spinSVpin 11
+#define btnActivePin 13
+#define btnStartPin 12
+
+#include &lt;Servo.h&gt;
+
+int armState = 0;
+Servo btmServo;
+Servo topServo;
+Servo gripServo;
+Servo spinServo;
+
+void setup() {
+  btmServo.attach(btmSVpin);
+  topServo.attach(topSVpin);
+  gripServo.attach(gripSVpin);
+  pinMode(btnActivePin, INPUT_PULLUP);
+  pinMode(btnStartPin, INPUT_PULLUP);
+  delay(1000);
+  startPos();
+}
+
+void loop() {
+  int btnActiveState = digitalRead(btnActivePin);
+  int btnStartState = digitalRead(btnStartPin);
+  Serial.println(btnActiveState);
+  if (btnActiveState == HIGH) {
+    activateEvent();
+  }
+  if (btnStartState == HIGH) {
+    startPos();
+  }
+}
+
+void startPos() {
+    btmServo.write(45);
+    topServo.write(120);
+    gripServo.write(15);
+    spinServo.write(90);
+    spinServo.detach();
+}
+
+void activateEvent() {
+  spinServo.attach(spinSVpin);
+  btmServo.write(46);
+  topServo.write(120);
+  delay(1000);
+  btmServo.write(100);
+  topServo.write(85);
+  delay(1000);
+  spinServo.write(45);
+  delay(325);
+  spinServo.write(90);
+  delay(1000);
+  btmServo.write(55);
+  topServo.write(55);
+  delay(500);
+  topServo.write(75);
+  delay(1000);
+  gripServo.write(40);
+  spinServo.detach();
+}
+</code></pre>
+
+<h2 id="pinball-table-design">Pinball Table design</h2>
+<p>Pinball table design taken from Thingiverse with certain elements modified so that it fit with the flow of the whole integrated design. The original design can be found <a href="https://www.thingiverse.com/thing:1040572">here</a>.
+<img alt="Screenshot" src="img/pinball-flap.png" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.1
+Build Date UTC : 2020-04-10 00:12:10
+-->
