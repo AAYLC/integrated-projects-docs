@@ -204,3 +204,4 @@ Pinball table design taken from Thingiverse with certain elements modified so th
 * `Freecad` - Opensource 3d design software
 * `MKdocs` - Simple and easy Markdown based documentation builder
 * `Github` - Online repository and version control system
+* `Curiosity and fun` - Having fun while doing project is important
