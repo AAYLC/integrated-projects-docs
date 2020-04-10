@@ -1,4 +1,4 @@
-# Welcome to the documentation for SMA DIH Miri Launching
+# Welcome to the documentation for SMA DIH Miri Launching integrated project
 There are 3 important parts of the integrated project which are Robotic arm, Pump oil jack and pinball table. 
 
 ## Pump oil jack(donkey)
@@ -89,14 +89,14 @@ void loop(){
 ## Robotic arm claw 
 Robotic arm clawbasically separated into 3 main parts which are base, controlled with powerful 360 degree servo, 
 middle part which determine upper and lower position of the arm of the claw and the claw itself which is controlled by 9g servo model. All files related 
-to the robotic arm claw can be found on [AAYLC repository](https://github.com/AAYLC/integrated-projects-docs/tree/master/robotic-arm-claw)
+to the robotic arm claw can be found on [AAYLC repository](https://github.com/AAYLC/integrated-projects-docs/tree/master/robotic-arm-claw). For the claw design, the original files and author can be found on [Thingiverse](https://www.thingiverse.com/thing:3614519)
 
 
 ### Robotic arm claw components
 
 1. Arduino Uno
 2. Servo motor towerpro 9G
-3. Servo motor towerpro 
+3. Servo motor towerpro(2)
 4. Servo motor 360 towerpro MG995
 5. Push button
 6. LDR
@@ -113,8 +113,7 @@ to the robotic arm claw can be found on [AAYLC repository](https://github.com/AA
 ### Robotic arm claw wiring
 ![Screenshot](img/robotic-arm-wiring.png)
 
-For the wiring, since there are only one 5V pin on UNO, all of the servo motor will be powered by external AAA battery pack. 
-This include the UNO to be powered by battery pack for portability power issue. 
+For the wiring, since there are only one 5V pin on UNO, all of the servo motor will be powered by external AAA battery pack. This include the UNO to be powered by battery pack for portability power issue.
 
 ### Robotic arm claw code
 ``` C
@@ -190,3 +189,10 @@ void activateEvent() {
 ## Pinball Table design
 Pinball table design taken from Thingiverse with certain elements modified so that it fit with the flow of the whole integrated design. The original design can be found [here](https://www.thingiverse.com/thing:1040572).
 ![Screenshot](img/pinball-flap.png)
+
+
+
+## Tools and resources used during this project
+* `Ultimaker Cura` - 3D design slicer for 3d print
+* `Fusion 360` - 3D design software
+* `Freecad` - Opensource 3d design software
