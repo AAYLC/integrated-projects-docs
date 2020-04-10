@@ -93,7 +93,7 @@ void loop(){
 
 
 ## Robotic arm claw 
-Robotic arm clawbasically separated into 4 main parts which are base, controlled with powerful 360 degree servo, middle part which determine upper and lower position of the arm of the claw and the claw itself which is controlled by 9g servo model. All files related 
+Robotic arm claw basically separated into 4 main parts which are base, controlled with powerful 360 degree servo, middle part which determine upper and lower position of the arm of the claw and the claw itself which is controlled by 9g servo model. All files related 
 to the robotic arm claw can be found on [AAYLC repository](https://github.com/AAYLC/integrated-projects-docs/tree/master/robotic-arm-claw). For the claw design, the original files and author can be found on [Thingiverse](https://www.thingiverse.com/thing:3614519)
 
 
@@ -204,4 +204,5 @@ Pinball table design taken from Thingiverse with certain elements modified so th
 * `Freecad` - Opensource 3d design software
 * `MKdocs` - Simple and easy Markdown based documentation builder
 * `Github` - Online repository and version control system
+* `Thingiverse` - Open source 3D design repository for 3D printer hobbyist
 * `Curiosity and fun` - Having fun while doing project is important
