@@ -10,6 +10,8 @@ to the pump oil jack can be found on [AAYLC repository](https://github.com/AAYLC
 1. Arduino Nano
 2. DC Motor
 3. DC Motor driver
+4. Wires and jumper
+5. AAA battery
 
 ### Pump oil jack design
 ![Screenshot](img/pump-labelled.png)
@@ -87,8 +89,7 @@ void loop(){
 
 
 ## Robotic arm claw 
-Robotic arm clawbasically separated into 3 main parts which are base, controlled with powerful 360 degree servo, 
-middle part which determine upper and lower position of the arm of the claw and the claw itself which is controlled by 9g servo model. All files related 
+Robotic arm clawbasically separated into 4 main parts which are base, controlled with powerful 360 degree servo, middle part which determine upper and lower position of the arm of the claw and the claw itself which is controlled by 9g servo model. All files related 
 to the robotic arm claw can be found on [AAYLC repository](https://github.com/AAYLC/integrated-projects-docs/tree/master/robotic-arm-claw). For the claw design, the original files and author can be found on [Thingiverse](https://www.thingiverse.com/thing:3614519)
 
 
@@ -102,6 +103,7 @@ to the robotic arm claw can be found on [AAYLC repository](https://github.com/AA
 6. LDR
 7. Laser
 8. Wires & jumper
+9. AAA battery
 
 ### Robotic arm claw design
 
@@ -196,3 +198,5 @@ Pinball table design taken from Thingiverse with certain elements modified so th
 * `Ultimaker Cura` - 3D design slicer for 3d print
 * `Fusion 360` - 3D design software
 * `Freecad` - Opensource 3d design software
+* `MKdocs` - Simple and easy Markdown based documentation builder
+* `Github` - Online repository and version control system
