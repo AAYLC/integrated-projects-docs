@@ -1,6 +1,8 @@
 # Welcome to the documentation for SMA DIH Miri Launching integrated project
 There are 3 important parts of the integrated project which are Robotic arm, Pump oil jack and pinball table. 
 
+![Screenshot](img/launching-day.jpeg)
+
 ## Pump oil jack(donkey)
 Pump oil jack design is created by Cisco Talos group that can be found on [Cisco Talos github](https://github.com/Cisco-Talos/oil-pumpjack), 
 all parts are under stl directory. The oil pump will be activated if the ball pass through it, triggered by LDR sensor and laser. All files related 
